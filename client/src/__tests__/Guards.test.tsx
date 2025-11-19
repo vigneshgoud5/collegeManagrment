@@ -30,7 +30,7 @@ describe('Route guards', () => {
     expect(screen.getByText('LOGIN')).toBeInTheDocument();
   });
 
-  it('blocks wrong role', () => {
+  it('blocks wrong role', async () => {
     const store = await import('../store/auth');
     (store as any).__setUser({ id: '1', email: 'x', role: 'student' });
     render(

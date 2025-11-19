@@ -1,4 +1,4 @@
-import mongoose, { Schema, Model } from 'mongoose';
+import mongoose, { Schema, Model, Document } from 'mongoose';
 
 export interface IStudentProfile extends Document {
   user: mongoose.Types.ObjectId;

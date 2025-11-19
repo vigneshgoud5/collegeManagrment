@@ -13,10 +13,12 @@ describe('Login page', () => {
         <Login />
       </MemoryRouter>
     );
-    expect(screen.getByText(/login/i)).toBeInTheDocument();
-    expect(screen.getByLabelText(/email/i)).toBeInTheDocument();
-    expect(screen.getByLabelText(/password/i)).toBeInTheDocument();
-    expect(screen.getByLabelText(/role/i)).toBeInTheDocument();
+    // Check for heading "Sign In"
+    expect(screen.getByRole('heading', { name: /sign in/i })).toBeInTheDocument();
+    // Check for form fields
+    expect(screen.getByLabelText(/email address/i)).toBeInTheDocument();
+    expect(screen.getByLabelText(/^password$/i)).toBeInTheDocument();
+    expect(screen.getByLabelText(/^role$/i)).toBeInTheDocument();
   });
 });
 
