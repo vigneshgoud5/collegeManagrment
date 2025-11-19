@@ -68,14 +68,27 @@ echo "JWT_REFRESH_SECRET=$(openssl rand -base64 32)"
 
 ### 4. Build and Start Services
 
+**Note:** Docker Compose v2 uses `docker compose` (with space), v1 uses `docker-compose` (with hyphen). The deployment scripts auto-detect the correct command.
+
 ```bash
-# Build and start all services
+# Option 1: Use the deployment script (recommended - auto-detects Docker Compose version)
+./deploy.sh
+
+# Option 2: Manual deployment
+# For Docker Compose v2 (modern):
+docker compose -f docker-compose.prod.yml up -d --build
+
+# For Docker Compose v1 (legacy):
 docker-compose -f docker-compose.prod.yml up -d --build
 
 # View logs
+docker compose -f docker-compose.prod.yml logs -f
+# OR
 docker-compose -f docker-compose.prod.yml logs -f
 
 # Check service status
+docker compose -f docker-compose.prod.yml ps
+# OR
 docker-compose -f docker-compose.prod.yml ps
 ```
 
